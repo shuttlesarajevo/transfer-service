@@ -6,6 +6,7 @@ import Select from '../../components/Select';
 import Input from '../../components/Input';
 
 
+
 function HomePage() {
   const options = [
     { key: 'fromAirport', label: "From Airport" },
@@ -22,13 +23,14 @@ function HomePage() {
 
   const onButtonClick = () => {
     //TODO: Add validation here 
-    navigate("/airport-transfer")
+    navigate("/airport-transfer", { state: { time, pickupLocation, dropoffLocation, passengerCount, selectedOption } });
   }
+    
 
   return (
     <div
-      className="block max-w-sm rounded-lg bg-black bg-cover p-6 shadow-lg dark:bg-neutral-700"
-    >
+      className="block max-w-sm rounded-lg bg-black bg-cover p-6 shadow-lg dark:bg-neutral-700">
+        
       <TextHeader title={cardHeader} />
       <p
         className="mb-4 text-base text-neutral-600 text-white  dark:text-neutral-200"
@@ -37,10 +39,8 @@ function HomePage() {
       </p>
 
       <Select className={"mb-2"} label="Service Type" value={selectedOption} options={options} onSelect={setSelectedOption} />
-      <Input className={"mb-2"} label={
-        selectedOption !== options[0].key ? "Pickup Address" : "Dropoff Address"}
-        onChange={selectedOption !== options[0].key ? (e) => setPickupLocation(e.target.value) : (e) => setDropoffLocation(e.target.value)}
-        value={selectedOption !== options[0].key ? pickupLocation : dropoffLocation} />
+    <Input className={"mb-2"} label="Pickup Address" onChange={(e) => setPickupLocation(e.target.value)} value={pickupLocation} />
+    <Input className={"mb-2"} label="Dropoff Address" onChange={(e) => setDropoffLocation(e.target.value)} value={dropoffLocation} />
       <Input value={time} className={"mb-2"} label={"Date and Time"} type="datetime-local" onChange={(e) => { setTime(e.target.value) }} />
       <Input type={"number"} className={"mb-2"} label={"Passengers"} onChange={(e) => setPassengerCount(e.target.value)} value={passengerCount} />
 
