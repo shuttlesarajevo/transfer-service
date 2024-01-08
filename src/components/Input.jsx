@@ -13,7 +13,7 @@ export const Input = ({ label, type, placeholder, onChange, error, name, classNa
           classNames(
             className,
             'bg-white z-10 border focus:ring-1 focus:ring-accent-500 focus:border-accent-500 placeholder-secondary-300 block w-full border-misc-300 rounded disabled:opacity-50 disabled:cursor-not-allowed',
-            error && 'block w-full text-danger-500 border-danger-500 placeholder-danger-500 focus-visible:outline-none focus:ring-1 focus:ring-danger-500 focus:border-danger-500',
+            error && 'block w-full text-red-500 border-red-500 placeholder-red-500 focus-visible:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500',
             textSize,
           )
         }
@@ -28,7 +28,7 @@ export const Input = ({ label, type, placeholder, onChange, error, name, classNa
         value={value}
         onChange={onChange}
       />
-      {error && <p>error</p>}
+      {error && <p className='text-red-500'>{error}</p>}
     </div>
   )
 }

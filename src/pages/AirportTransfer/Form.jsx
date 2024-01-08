@@ -34,9 +34,14 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateEmail(email)) {
-      alert('Please enter a valid email address');
+      alert('Please enter a valid email address'); // change it so it should not be alert, please use emailError state and show error message
       return;
     }
+    //ALEM: Validate rest of the fields based on selected option
+
+
+
+    // ALEM: IF everything is ok and all fields are field please navigate user to new page, that should shown "Success message "
   };
 
 
@@ -44,22 +49,23 @@ const Form = () => {
   return (
     <div className='flex items-center w-full h-screen justify-center bg-cover'
       style={{ backgroundImage: `url('https://img.freepik.com/free-vector/aesthetic-shadow-beige-texture-background_53876-120565.jpg?size=626&ext=jpg')` }}>
-        <div className="block max-w-sm rounded-lg bg-black bg-cover p-6 shadow-lg dark:bg-neutral-700">
-          <form>
-      <TextHeader title="Form" />
-      <Select label="Service Type" value={selectedOptionState} options={options} onSelect={setSelectedOption} />
-      <Input type="datetime-local" label="Time" value={timeState} onChange={(e) => setTime(e.target.value)} />
-      <Input label="Pickup Location" value={pickupLocationState} onChange={(e) => setPickupLocation(e.target.value)} />
-      <Input label="Dropoff Location" value={dropoffLocationState} onChange={(e) => setDropoffLocation(e.target.value)} />
-      <Input type="number" label="Passenger Count" value={passengerCountState} onChange={(e) => setPassengerCount(e.target.value)} />
-      <Input label="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-      <Input label="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-      <Input label="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-      <Input type="number" label="Luggage Count" value={luggageCount} onChange={(e) => setLuggageCount(e.target.value)} />
-      <Input label="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} />
-      
-      <Button title="Submit" onClick={handleSubmit} />
-      </form>
+      <div className="block max-w-sm rounded-lg bg-black bg-cover p-6 shadow-lg dark:bg-neutral-700">
+        <form>
+          <TextHeader title="Form" />
+          <Select label="Service Type" value={selectedOptionState} options={options} onSelect={setSelectedOption} />
+          <Input type="datetime-local" label="Time" value={timeState} onChange={(e) => setTime(e.target.value)} />
+          {/* ALEM: Please show only dropoff or pickup based on selected option */}
+          <Input label="Pickup Location" value={pickupLocationState} onChange={(e) => setPickupLocation(e.target.value)} />
+          <Input label="Dropoff Location" value={dropoffLocationState} onChange={(e) => setDropoffLocation(e.target.value)} />
+          <Input type="number" label="Passenger Count" value={passengerCountState} onChange={(e) => setPassengerCount(e.target.value)} />
+          <Input label="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+          <Input label="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+          <Input label="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+          <Input type="number" label="Luggage Count" value={luggageCount} onChange={(e) => setLuggageCount(e.target.value)} />
+          <Input label="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+          <Button title="Submit" onClick={handleSubmit} />
+        </form>
       </div>
     </div>
   );
