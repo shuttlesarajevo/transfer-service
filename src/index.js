@@ -8,6 +8,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Form from './pages/AirportTransfer/Form';
+import Success from './pages/Success/Success';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/airport-transfer",
     element: <Form />
+  },
+  {
+    path: "/success", // Add this route
+    element: <Success />
   }
 ]);
 
