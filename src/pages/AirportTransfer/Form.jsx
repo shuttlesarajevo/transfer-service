@@ -30,7 +30,7 @@ const Form = () => {
   const [lastNameError, setLastNameError] = useState('');
   const [pickupLocationError, setPickupLocationError] = useState('');
   const [dropoffLocationError, setDropoffLocationError] = useState('');
-  
+
 
   const options = [
     { key: 'fromAirport', label: "From Airport" },
@@ -42,8 +42,11 @@ const Form = () => {
   };
 
   const validatePhoneNumber = (phoneNumber) => {
-    const re = /^(\+\d{1,3}[- ]?)?\d{10}$/;
-    return re.test(String(phoneNumber));
+    // const re = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+    // return re.test(String(phoneNumber));
+    // TODO: Implement better soulution
+    if (phoneNumber.length > 0) return true
+    return false
   };
   const validateForm = () => {
     let isValid = true;
@@ -111,13 +114,13 @@ const Form = () => {
         <form>
           <TextHeader title="Form" />
           <Select label="Service Type" value={selectedOptionState} options={options} onSelect={setSelectedOption} />
-          {selectedOptionState === 'fromAirport' && <Input label="Dropoff Location" value={dropoffLocationState}  onChange={(e) => { setDropoffLocation(e.target.value); setDropoffLocationError(''); }} error={dropoffLocationError} />}
-          {selectedOptionState === 'toAirport' && <Input label="Pickup Location" value={pickupLocationState}  onChange={(e) => { setPickupLocation(e.target.value); setPickupLocationError(''); }} error={pickupLocationError} />}
-          <Input type="datetime-local" label="Time" value={timeState}  onChange={(e) => { setTime(e.target.value); setTimeError(''); }} error={timeError} />
+          {selectedOptionState === 'fromAirport' && <Input label="Dropoff Location" value={dropoffLocationState} onChange={(e) => { setDropoffLocation(e.target.value); setDropoffLocationError(''); }} error={dropoffLocationError} />}
+          {selectedOptionState === 'toAirport' && <Input label="Pickup Location" value={pickupLocationState} onChange={(e) => { setPickupLocation(e.target.value); setPickupLocationError(''); }} error={pickupLocationError} />}
+          <Input type="datetime-local" label="Time" value={timeState} onChange={(e) => { setTime(e.target.value); setTimeError(''); }} error={timeError} />
           <Input type="number" label="Passenger Count" value={passengerCountState} onChange={(e) => { setPassengerCount(e.target.value); setPassengerCountError(''); }} error={passengerCountError} />
           <Input label="First Name" value={firstName} onChange={(e) => { setFirstName(e.target.value); setFirstNameError(''); }} error={firstNameError} />
           <Input label="Last Name" value={lastName} onChange={(e) => { setLastName(e.target.value); setLastNameError(''); }} error={lastNameError} />
-          <Input label="Phone Number" value={phoneNumber} onChange={(e) => {setPhoneNumber(e.target.value); setPhoneNumberError('');}} error={phoneNumberError} />
+          <Input label="Phone Number" value={phoneNumber} onChange={(e) => { setPhoneNumber(e.target.value); setPhoneNumberError(''); }} error={phoneNumberError} />
           <Input type="number" label="Luggage Count" value={luggageCount} onChange={(e) => { setLuggageCount(e.target.value); setLuggageCountError(''); }} error={luggageCountError} />
           <Input label="Email Address" value={email} onChange={(e) => { setEmail(e.target.value); setEmailError(''); }} error={emailError} />
 
